@@ -1,0 +1,1 @@
+SELECT Applications.app_name FROM Applications INNER JOIN Licenses ON Applications.app_id = Licenses.app_id WHERE Licenses.is_active = 0

@@ -1,0 +1,1 @@
+SELECT Applications.app_name,Vendors.vendor_name FROM Applications INNER JOIN Vendors ON Applications.vendor_id = Vendors.vendor_id
