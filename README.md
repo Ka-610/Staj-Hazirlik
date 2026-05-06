@@ -25,6 +25,8 @@ In the first week, I established a professional workflow by mastering Git fundam
 ### 🔵 Week 2: Database Management & SQL Fundamentals
 *Focus: Structured data manipulation and relational database logic.*
 
+*Status: Completed ✅*
+
 This week was dedicated to understanding how data is stored, queried, and managed using **SQLite** and **DB Browser**. Mastering SQL is critical for analyzing security logs and understanding backend vulnerabilities.
 
 **Key Achievements:**
