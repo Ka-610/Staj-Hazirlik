@@ -21,7 +21,16 @@ class VendorManager:
             print(f"{vendor[0]:<5} | {vendor[1]:<20} | {vendor[2]:<25}")
  
     def delete_vendor(self, vendor_id):
-        query = "DELETE FROM Vendors WHERE vendor_id = ?"
-        self.db.cursor.execute(query, (vendor_id,))
-        self.db.connection.commit()
-        print(f"Başarılı: {vendor_id} ID'li satıcı silindi.")
+        check_query = "SELECT vendor_id FROM Vendors WHERE vendor_id = ?"
+        self.db.cursor.execute(check_query, (vendor_id,))
+        vendor = self.db.cursor.fetchone()
+        
+        if vendor is None:
+            print(f"{vendor_id} ID'li üretici sistemde bulunamadı!")
+            return 
+        
+        else:
+            query = "DELETE FROM Vendors WHERE vendor_id = ?"
+            self.db.cursor.execute(query, (vendor_id,))
+            self.db.connection.commit()
+            print(f"Başarılı: {vendor_id} ID'li üretici silindi.")

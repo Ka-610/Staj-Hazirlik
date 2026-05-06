@@ -21,7 +21,16 @@ class ApplicationManager:
             print(f"{app[0]:<5} | {app[1]:<20} | {app[2]:<15} | {app[3]:<5}")
  # DELETE (Silme)
     def delete_app(self, app_id):
-        query = "DELETE FROM Applications WHERE app_id = ?"
-        self.db.cursor.execute(query, (app_id,))
-        self.db.connection.commit()
-        print(f"Başarılı: {app_id} ID'li uygulama silindi.")
+        check_query = "SELECT app_id FROM Applications WHERE app_id = ?"
+        self.db.cursor.execute(check_query, (app_id,))
+        app = self.db.cursor.fetchone()
+        
+        if app is None:
+            print(f"{app_id} ID'li uygulama sistemde bulunamadı!")
+            return
+        
+        else:
+            query = "DELETE FROM Applications WHERE app_id = ?"
+            self.db.cursor.execute(query, (app_id,))
+            self.db.connection.commit()
+            print(f"Başarılı: {app_id} ID'li uygulama silindi.")
